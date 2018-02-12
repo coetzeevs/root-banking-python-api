@@ -45,12 +45,12 @@ class Cards:
         return data
 
     def create_virtual_card(self):
-        parameters = [
+        payload = [
             ("name", self.card_name),
             ("secure_code", self.secure_code)
         ]
         url = self.api_url + self.route + "/create-virtual"
-        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=parameters)
+        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=payload)
         data = json.loads(r.text)
 
         return data
@@ -70,21 +70,21 @@ class Cards:
         return data
 
     def set_pin(self):
-        parameters = [
+        payload = [
             ("pin", self.pin)
         ]
         url = self.api_url + self.route + self.card_id + "/set-pin"
-        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=parameters)
+        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=payload)
         data = json.loads(r.text)
 
         return data
 
     def set_card_3d_secure(self):
-        parameters = [
+        payload = [
             ("secure_code", self.secure_code)
         ]
         url = self.api_url + self.route + self.card_id + "/set-secure-code"
-        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=parameters)
+        r = requests.post(url, auth=(os.environ['TEST_API_KEY'], ''), data=payload)
         data = json.loads(r.text)
 
         return data

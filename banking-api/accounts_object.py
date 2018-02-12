@@ -5,9 +5,12 @@ import json
 base_url = 'https://sandbox.root.co.za/v1/'
 
 
-class Accounts:
+class Account:
     route = "/account/"
     api_url = base_url
+
+    def __init__(self):
+        pass
 
     def fetch_account(self):
         url = self.api_url + self.route
@@ -15,9 +18,3 @@ class Accounts:
         data = json.loads(r.text)
 
         return data
-
-# acc = Accounts()
-#
-# acs = acc.fetch_account()
-#
-# print(acs)
